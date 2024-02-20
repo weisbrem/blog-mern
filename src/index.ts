@@ -2,6 +2,7 @@ import express, { Application } from 'express';
 import mongoose from 'mongoose';
 import multer, { diskStorage } from 'multer';
 import dotenv from 'dotenv';
+import cors from 'cors';
 
 import { getMe, login, register } from './controllers/UserController';
 import { create, getAll, getOne, remove, update } from './controllers/PostController';
@@ -33,6 +34,7 @@ const storage = diskStorage({
 const upload = multer({ storage });
 
 app.use(express.json());
+app.use(cors());
 app.use('/uploads', express.static('src/uploads'));
 
 /** /auth/login */
